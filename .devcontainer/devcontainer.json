@@ -6,7 +6,7 @@
 	"image": "mcr.microsoft.com/devcontainers/base:resolute",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/node:2": {},
 		"ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
 		"ghcr.io/devcontainers/features/python:1": {
 			"version": "3.12"
