@@ -1,24 +1,24 @@
-# CodeBuddy Code
 
-Installs the [CodeBuddy Code](https://www.codebuddy.cn) CLI (`codebuddy`) - an AI-powered coding assistant.
+# CodeBuddy Code (codebuddy)
+
+Installs the CodeBuddy Code CLI (codebuddy) - an AI-powered coding assistant
 
 ## Example Usage
 
 ```json
-{
-    "features": {
-        "ghcr.io/unfallenwill/devcontainer-features/codebuddy:1": {}
-    }
+"features": {
+    "ghcr.io/unfallenwill/devcontainer-features/codebuddy:1": {}
 }
 ```
 
 ## Options
 
-| Option | Default | Description |
-|--------|---------|-------------|
-| `version` | `latest` | Version of CodeBuddy Code to install (e.g. `0.1.0`). Use `latest` for the newest release. |
+| Options Id | Description | Type | Default Value |
+|-----|-----|-----|-----|
+| version | Select or enter the version of CodeBuddy Code to install (e.g. '0.1.0'). Use 'latest' for the newest release. | string | latest |
 
-## Supported Platforms
 
-- Linux (x86_64, arm64, musl)
-- macOS (x86_64, arm64)
+
+---
+
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/unfallenwill/devcontainer-features/blob/main/src/codebuddy/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
