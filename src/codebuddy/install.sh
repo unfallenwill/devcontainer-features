@@ -132,8 +132,7 @@ resolve_version() {
             echo "ERROR: Failed to determine latest version"
             exit 1
         fi
-        # Strip leading 'v' if present
-        VERSION="${VERSION#v}"
+        # Version from API has no 'v' prefix
     fi
 
     echo "Installing CodeBuddy Code version: ${VERSION}"
@@ -165,7 +164,7 @@ verify_checksum() {
 download_and_install() {
     REPOSITORY="https://acc-1258344699.cos.accelerate.myqcloud.com/@tencent-ai/codebuddy-code/releases"
     ARCHIVE_NAME="codebuddy-code_${TARGET}.${EXT}"
-    DOWNLOAD_URL="$REPOSITORY/download/v${VERSION}/${ARCHIVE_NAME}"
+    DOWNLOAD_URL="$REPOSITORY/download/${VERSION}/${ARCHIVE_NAME}"
 
     # Determine install directory
     if [ -n "${_REMOTE_USER_HOME:-}" ]; then
@@ -186,7 +185,7 @@ download_and_install() {
 
     # Verify checksum
     echo "Verifying checksum..."
-    CHECKSUMS=$(download "$REPOSITORY/download/v${VERSION}/checksums.txt" "${TMPDIR}/checksums.txt" 2>/dev/null || true)
+    CHECKSUMS=$(download "$REPOSITORY/download/${VERSION}/checksums.txt" "${TMPDIR}/checksums.txt" 2>/dev/null || true)
     if [ -f "${TMPDIR}/checksums.txt" ] && [ -s "${TMPDIR}/checksums.txt" ]; then
         expected=$(grep " ${ARCHIVE_NAME}$" "${TMPDIR}/checksums.txt" | awk '{print $1}')
         if [ -n "$expected" ]; then
