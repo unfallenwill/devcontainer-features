@@ -1,0 +1,30 @@
+
+# MiMo Code (mimo-code)
+
+Installs the MiMo Code CLI (mimo) - an AI-powered coding assistant by Xiaomi
+
+## Example Usage
+
+```json
+"features": {
+    "ghcr.io/unfallenwill/devcontainer-features/mimo-code:1": {}
+}
+```
+
+## Options
+
+| Options Id | Description | Type | Default Value |
+|-----|-----|-----|-----|
+| version | Select or enter the version of MiMo Code to install (e.g. '0.1.0'). Use 'latest' for the newest release. | string | latest |
+
+## Customizations
+
+### VS Code Extensions
+
+- `MiMo.mi-mo`
+
+
+
+---
+
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/unfallenwill/devcontainer-features/blob/main/src/mimo-code/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
