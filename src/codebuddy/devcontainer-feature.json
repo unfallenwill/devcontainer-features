@@ -1,0 +1,18 @@
+{
+    "name": "CodeBuddy Code",
+    "id": "codebuddy",
+    "version": "1.0.0",
+    "description": "Installs the CodeBuddy Code CLI (codebuddy) - an AI-powered coding assistant",
+    "documentationURL": "https://www.codebuddy.cn",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": ["latest"],
+            "default": "latest",
+            "description": "Select or enter the version of CodeBuddy Code to install (e.g. '0.1.0'). Use 'latest' for the newest release."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
