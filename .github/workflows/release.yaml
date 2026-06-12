@@ -55,21 +55,32 @@ jobs:
             file_path=${readme:2}
             echo "Committing updates to $file_path"
 
+            # Try to get existing file SHA (returns empty for new files)
             file_sha=$(gh api \
               --method GET \
               /repos/$GITHUB_REPOSITORY/contents/$file_path?ref=main \
-              -q '.sha')
+              -q '.sha' 2>/dev/null || echo "")
 
-            echo "SHA for $file_path: $file_sha"
-
-            gh api \
-              --method PUT \
-              /repos/$GITHUB_REPOSITORY/contents/$file_path \
-              -f message="$message" \
-              -f content="$(base64 -i $readme)" \
-              -f sha="$file_sha" \
-              -f branch="$branch" \
-              || echo "No changes to commit for $file_path"
+            if [ -n "$file_sha" ]; then
+              echo "Updating existing file, SHA: $file_sha"
+              gh api \
+                --method PUT \
+                /repos/$GITHUB_REPOSITORY/contents/$file_path \
+                -f message="$message" \
+                -f content="$(base64 -i $readme)" \
+                -f sha="$file_sha" \
+                -f branch="$branch" \
+                || echo "No changes to commit for $file_path"
+            else
+              echo "Creating new file: $file_path"
+              gh api \
+                --method PUT \
+                /repos/$GITHUB_REPOSITORY/contents/$file_path \
+                -f message="$message" \
+                -f content="$(base64 -i $readme)" \
+                -f branch="$branch" \
+                || echo "Failed to create $file_path"
+            fi
           done
 
           gh pr create --title "$message" --body "$message" --head "$branch" --base "main" || echo "No changes to create PR for"
