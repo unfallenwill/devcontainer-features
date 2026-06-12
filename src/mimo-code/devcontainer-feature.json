@@ -1,0 +1,26 @@
+{
+    "name": "MiMo Code",
+    "id": "mimo-code",
+    "version": "1.0.0",
+    "description": "Installs the MiMo Code CLI (mimo) - an AI-powered coding assistant by Xiaomi",
+    "documentationURL": "https://mimo.xiaomi.com",
+    "licenseURL": "https://github.com/XiaomiMiMo/MiMo-Code/blob/main/LICENSE",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": ["latest"],
+            "default": "latest",
+            "description": "Select or enter the version of MiMo Code to install (e.g. '0.1.0'). Use 'latest' for the newest release."
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "MiMo.mi-mo"
+            ]
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
