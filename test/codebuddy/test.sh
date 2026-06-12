@@ -5,9 +5,8 @@ set -e
 source dev-container-features-test-lib
 
 # Feature-specific tests
-check "codebuddy cli installed" command -v codebuddy
-check "codebuddy version" codebuddy --version
-check "codebuddy symlink exists" test -L /usr/local/bin/codebuddy
+check "codebuddy installed" test -x "${_REMOTE_USER_HOME:-$HOME}/.codebuddy/bin/codebuddy"
+check "codebuddy version" ${_REMOTE_USER_HOME:-$HOME}/.codebuddy/bin/codebuddy --version
 
 # Report results
 reportResults

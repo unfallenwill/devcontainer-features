@@ -210,9 +210,6 @@ download_and_install() {
 
     cp "$BINARY" "${INSTALL_DIR}/codebuddy"
     chmod +x "${INSTALL_DIR}/codebuddy"
-
-    # Symlink to /usr/local/bin so it's on PATH
-    ln -sf "${INSTALL_DIR}/codebuddy" /usr/local/bin/codebuddy
 }
 
 # Fix ownership for remote user
@@ -222,6 +219,20 @@ configure_ownership() {
     fi
 
     chown -R "$_REMOTE_USER" "${_REMOTE_USER_HOME}/.codebuddy" 2>/dev/null || true
+
+    # Add ~/.codebuddy/bin to PATH via shell profile if not already present
+    local profile=""
+    if [ -f "${_REMOTE_USER_HOME}/.zshrc" ]; then
+        profile="${_REMOTE_USER_HOME}/.zshrc"
+    elif [ -f "${_REMOTE_USER_HOME}/.bashrc" ]; then
+        profile="${_REMOTE_USER_HOME}/.bashrc"
+    fi
+
+    if [ -n "$profile" ] && ! grep -q '/.codebuddy/bin' "$profile" 2>/dev/null; then
+        echo "" >> "$profile"
+        echo "export PATH=\"\${HOME}/.codebuddy/bin:\${PATH}\"" >> "$profile"
+        chown "$_REMOTE_USER" "$profile" 2>/dev/null || true
+    fi
 }
 
 # Print error guidance
@@ -250,9 +261,9 @@ main() {
     download_and_install
     configure_ownership
 
-    if command -v codebuddy >/dev/null 2>&1; then
+    if [ -x "${INSTALL_DIR}/codebuddy" ]; then
         echo "CodeBuddy Code v${VERSION} installed successfully!"
-        codebuddy --version
+        "${INSTALL_DIR}/codebuddy" --version
     else
         print_install_help
         exit 1
