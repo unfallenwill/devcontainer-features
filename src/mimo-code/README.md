@@ -1,6 +1,7 @@
-# MiMo Code
 
-Installs the MiMo Code CLI (`mimo`) - an AI-powered coding assistant by Xiaomi.
+# MiMo Code (mimo-code)
+
+Installs the MiMo Code CLI (mimo) - an AI-powered coding assistant by Xiaomi
 
 ## Example Usage
 
@@ -12,9 +13,9 @@ Installs the MiMo Code CLI (`mimo`) - an AI-powered coding assistant by Xiaomi.
 
 ## Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `version` | string | `"latest"` | The version of MiMo Code to install (e.g. `"0.1.0"`). Use `"latest"` for the newest release. |
+| Options Id | Description | Type | Default Value |
+|-----|-----|-----|-----|
+| version | Select or enter the version of MiMo Code to install (e.g. '0.1.0'). Use 'latest' for the newest release. | string | latest |
 
 ## Customizations
 
@@ -22,16 +23,8 @@ Installs the MiMo Code CLI (`mimo`) - an AI-powered coding assistant by Xiaomi.
 
 - `MiMo.mi-mo`
 
-## OS Support
 
-This feature installs a pre-built native binary and supports:
 
-| OS | Architecture |
-|----|-------------|
-| Linux | x86_64, aarch64 |
-| Linux (musl/Alpine) | x86_64, aarch64 |
-| macOS | x86_64, aarch64 |
+---
 
-## Notes
-
-The binary is installed to `~/.mimocode/bin/mimo` and symlinked to `/usr/local/bin/mimo`.
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/unfallenwill/devcontainer-features/blob/main/src/mimo-code/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
