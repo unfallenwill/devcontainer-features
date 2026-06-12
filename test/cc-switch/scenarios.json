@@ -1,0 +1,22 @@
+{
+    "latest": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "cc-switch": {
+                "version": "latest"
+            }
+        }
+    },
+    "debian": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "features": {
+            "cc-switch": {}
+        }
+    },
+    "alpine": {
+        "image": "mcr.microsoft.com/devcontainers/base:alpine",
+        "features": {
+            "cc-switch": {}
+        }
+    }
+}

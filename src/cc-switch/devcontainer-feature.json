@@ -1,0 +1,18 @@
+{
+    "name": "CC-Switch CLI",
+    "id": "cc-switch",
+    "version": "1.0.0",
+    "description": "Installs CC-Switch CLI - an all-in-one manager for AI coding assistants (Claude Code, Codex, Gemini CLI, etc.)",
+    "documentationURL": "https://github.com/SaladDay/cc-switch-cli",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": ["latest"],
+            "default": "latest",
+            "description": "Select or enter the version of CC-Switch CLI to install (e.g. '5.8.2'). Use 'latest' for the newest release."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
