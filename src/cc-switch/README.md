@@ -1,45 +1,24 @@
-# CC-Switch CLI
 
-Installs [CC-Switch CLI](https://github.com/SaladDay/cc-switch-cli) (`cc-switch`) - an all-in-one manager for AI coding assistants.
+# CC-Switch CLI (cc-switch)
 
-## Supported Apps
-
-- Claude Code
-- Codex
-- Gemini CLI
-- OpenCode
-- Hermes
-- OpenClaw
+Installs CC-Switch CLI - an all-in-one manager for AI coding assistants (Claude Code, Codex, Gemini CLI, etc.)
 
 ## Example Usage
 
 ```json
-{
-    "features": {
-        "ghcr.io/unfallenwill/devcontainer-features/cc-switch:1": {}
-    }
+"features": {
+    "ghcr.io/unfallenwill/devcontainer-features/cc-switch:1": {}
 }
 ```
 
 ## Options
 
-| Option | Default | Description |
-|--------|---------|-------------|
-| `version` | `latest` | Version of CC-Switch CLI to install (e.g. `5.8.2`). Use `latest` for the newest release. |
+| Options Id | Description | Type | Default Value |
+|-----|-----|-----|-----|
+| version | Select or enter the version of CC-Switch CLI to install (e.g. '5.8.2'). Use 'latest' for the newest release. | string | latest |
 
-## Supported Platforms
 
-- Linux (x86_64, arm64, musl and glibc)
-- macOS (Universal binary for Apple Silicon and Intel)
 
-## Usage
+---
 
-```bash
-# Interactive TUI mode
-cc-switch
-
-# CLI mode
-cc-switch provider list
-cc-switch use <id>
-cc-switch --app codex mcp sync
-```
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/unfallenwill/devcontainer-features/blob/main/src/cc-switch/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
