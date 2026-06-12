@@ -68,11 +68,13 @@ ensure_dependencies() {
 }
 
 # Detect OS and architecture
+# Release artifact naming: mimocode-{os}-{arch}[-suffix].{ext}
+# Examples: mimocode-linux-x64.tar.gz, mimocode-linux-arm64-musl.tar.gz, mimocode-darwin-arm64.zip
 detect_platform() {
     OS="$(uname -s)"
     case "$OS" in
-        Linux*)  PLATFORM="unknown-linux-gnu" ;;
-        Darwin*) PLATFORM="apple-darwin" ;;
+        Linux*)  PLATFORM="linux" ;;
+        Darwin*) PLATFORM="darwin" ;;
         *)
             echo "ERROR: Unsupported OS: $OS"
             exit 1
@@ -81,8 +83,8 @@ detect_platform() {
 
     ARCH="$(uname -m)"
     case "$ARCH" in
-        x86_64|amd64)   ARCH="x86_64" ;;
-        aarch64|arm64)  ARCH="aarch64" ;;
+        x86_64|amd64)   ARCH="x64" ;;
+        aarch64|arm64)  ARCH="arm64" ;;
         *)
             echo "ERROR: Unsupported architecture: $ARCH"
             exit 1
@@ -95,7 +97,7 @@ detect_platform() {
         MUSL_SUFFIX="-musl"
     fi
 
-    TARGET="${ARCH}-${PLATFORM}${MUSL_SUFFIX}"
+    TARGET="${PLATFORM}-${ARCH}${MUSL_SUFFIX}"
 }
 
 # Resolve the version to install
